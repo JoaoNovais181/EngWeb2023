@@ -1,0 +1,143 @@
+:root {
+	--topbarHeight: 70px;
+	--mostraCaraibas: none;
+	font-size: large;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.topbar {
+	overflow:hidden;
+	position: fixed;
+	box-sizing: border-box;	
+	width: 100%;
+	height: var(--topbarHeight);
+	border-top: 1px solid #55575A;
+	border-bottom: 1px solid #55575A;
+	left: 0px;
+	top: 0px;
+	background-color: #0B2239;
+	z-index: 2;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.topbar a {
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 100%;
+}
+
+.topbar a *{
+	position: relative;
+	top: 50%;
+	transform: translate(0%, -50%);
+	height: 80%;
+}
+
+.topbar hr {
+	color: black;
+}
+
+.topbar img {
+	filter:invert(100%);
+}
+
+.topbar a p{
+	margin: 0px;
+	font-size: xx-large;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+
+.leftbar {
+	overflow: hidden;
+	position: fixed;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap:nowrap;
+	align-items:unset;
+	justify-content: flex-start;
+
+	top: var(--topbarHeight);
+	left: 0px;
+	width: 20%;
+	height: 100%;
+	border-right: 1px solid #55575A;
+	background-color: #0B2239;
+	z-index: 1;
+}
+
+.leftbar *{
+	margin: 10px;
+	color: white;
+}
+
+.content {
+	overflow: hidden;
+	position: absolute;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: unset;
+	justify-content: flex-start;
+
+	right: 0px;
+	top: var(--topbarHeight);
+	width: calc(80% - 40px); /* 80% do espaço - 40px (relativo aos 20px de margem de cada lado) */
+	margin: 20px;
+	background-color: #FFFFFF;
+	z-index: 1;	
+}
+
+.content .mapa{
+	align-self: center;
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Simple_world_map.svg/1024px-Simple_world_map.svg.png");
+	height:550px;
+	width:1100px;
+	border: 1px solid black;
+}
+
+.content .mapa .caraibas {
+	height: 10%;
+	width: 6%;
+	position: relative;
+	left: 17.6%;
+	top: 38%; 
+	display: var(--mostraCaraibas);
+}
+
+.content *{
+	position: relative;
+	color: #0B2239;
+}
+
+.imagens {
+	
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+	gap: 40px;
+}
+
+.imagens *
+{
+	width: 30%;
+	margin: 0px;
+	border: 2px solid #0B2239;
+	border-radius: 5%;
+	filter: drop-shadow(5px 5px 5px black)
+}
+
+.imagens img:hover {
+	filter:brightness(150%) drop-shadow(5px 5px 5px black);
+}
