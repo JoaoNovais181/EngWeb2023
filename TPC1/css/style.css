@@ -1,6 +1,5 @@
 :root {
-	--topbarHeight: 70px;
-	--mostraCaraibas: none;
+	--topbarHeight: 7%;
 	font-size: large;
 	font-family: 'Source Sans Pro', sans-serif;
 }
@@ -21,6 +20,8 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .topbar a {
@@ -28,21 +29,14 @@
 	margin-left: 10px;
 	margin-right: 10px;
 	height: 100%;
-}
-
-.topbar a *{
-	position: relative;
-	top: 50%;
-	transform: translate(0%, -50%);
-	height: 80%;
-}
-
-.topbar hr {
-	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .topbar img {
 	filter:invert(100%);
+	height: 80%;
 }
 
 .topbar a p{
@@ -66,8 +60,8 @@
 
 	top: var(--topbarHeight);
 	left: 0px;
-	width: 20%;
-	height: 100%;
+	width: 25%;
+	height: calc(100% - var(--topbarHeight));
 	border-right: 1px solid #55575A;
 	background-color: #0B2239;
 	z-index: 1;
@@ -76,10 +70,23 @@
 .leftbar *{
 	margin: 10px;
 	color: white;
+	font-size: xx-large;
+	text-indent: 10px;
+	text-decoration: none;
+}
+
+.leftbar a:hover {
+	background-color: grey;
+	color:black;
+}
+
+.leftbar a.active {
+	color: black;
+	background-color: white;
 }
 
 .content {
-	overflow: hidden;
+	overflow: visible;
 	position: absolute;
 	box-sizing: border-box;
 
@@ -91,27 +98,10 @@
 
 	right: 0px;
 	top: var(--topbarHeight);
-	width: calc(80% - 40px); /* 80% do espaço - 40px (relativo aos 20px de margem de cada lado) */
+	width: calc(75% - 40px); /* 80% do espaço - 40px (relativo aos 20px de margem de cada lado) */
 	margin: 20px;
 	background-color: #FFFFFF;
 	z-index: 1;	
-}
-
-.content .mapa{
-	align-self: center;
-	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Simple_world_map.svg/1024px-Simple_world_map.svg.png");
-	height:550px;
-	width:1100px;
-	border: 1px solid black;
-}
-
-.content .mapa .caraibas {
-	height: 10%;
-	width: 6%;
-	position: relative;
-	left: 17.6%;
-	top: 38%; 
-	display: var(--mostraCaraibas);
 }
 
 .content *{
@@ -119,25 +109,27 @@
 	color: #0B2239;
 }
 
-.imagens {
-	
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	align-items: baseline;
-	gap: 40px;
+.dropdown {
+	display:inline-flex;
 }
 
-.imagens *
-{
-	width: 30%;
-	margin: 0px;
-	border: 2px solid #0B2239;
-	border-radius: 5%;
-	filter: drop-shadow(5px 5px 5px black)
+.dropdown-content {
+	display: none;
+	position: absolute;
+	margin:20px;
+	min-height: 100%;
+	z-index: 2;
 }
 
-.imagens img:hover {
-	filter:brightness(150%) drop-shadow(5px 5px 5px black);
+.dropdown:hover .dropdown-content{
+	display: block;
 }
+
+.dropdown-content img {
+	position: relative;
+	border: 2px solid black;
+	background-color: white;
+	filter: drop-shadow(2px 2px 2px lightgrey);
+	min-height: 100%;
+}
+
