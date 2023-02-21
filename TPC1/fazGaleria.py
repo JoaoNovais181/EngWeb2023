@@ -20,7 +20,7 @@ pagHTML = """
 		</div>
 		<div class="leftbar">
 			<a href="index.html">Início</a>
-			<a href="factos.html">Factos sobre Iguanas-Verdes</a>
+			<a href="factos.html">Factos sobre Iguanas</a>
 			<a class="active" href="galeria.html">Galeria de Fotos</a>
 		</div>
 		<div class="content">
