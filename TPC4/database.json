@@ -1,0 +1,26 @@
+{
+  "users": [],
+  "tasks": [
+    {
+      "id": "t0",
+      "dueDate": "2023-03-17",
+      "author": "Eu",
+      "description": "TPC4 de PL",
+      "state": "due"
+    },
+    {
+      "id": "t1",
+      "dueDate": "2023-03-24",
+      "author": "Eu",
+      "description": "TPC5 de PL",
+      "state": "due"
+    },
+    {
+      "id": "t2",
+      "dueDate": "2023-03-31",
+      "author": "EU",
+      "description": "TPC6 de PL",
+      "state": "done"
+    }
+  ]
+}
