@@ -1,6 +1,6 @@
 
 
-exports.genPage = function (tasks, t = null) {
+exports.genPage = function (tasks, users=[], t = null) {
 	pagHTML = `
 	<!DOCTYPE html>
 	<html>
@@ -8,13 +8,44 @@ exports.genPage = function (tasks, t = null) {
 			<meta charset="utf-8"/>
 			<title>TPC4 - To Do List</title>
 			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+			<script>
+				function openForm(evt, formName) {
+					console.log("Crl")
+					var i;
+				 	var x = document.getElementsByClassName("form");
+					for (i = 0; i < x.length; i++) {
+						x[i].style.display = "none";
+					}
+					var tablinks = document.getElementsByClassName("tablink");
+					for (i = 0; i < x.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace(" w3-deep-purple", "");
+  				}
+					document.getElementById(formName).style.display = "block";
+				 	evt.currentTarget.className += " w3-deep-purple";
+				}
+			</script>
 		</head>
 		<body>
-			<div class="w3-card w3-border-bottom" style="height:35vh">
-				<div class="w3-container w3-deep-purple">
+			<div class="w3-card-4 w3-border-bottom">
+				<header class="w3-container w3-deep-purple">
 					<h3>Add Taks</h3>
-				</div>
-				<form class="w3-container" method="POST">`
+				</header>
+				<div class="w3-bar w3-white w3-border-bottom">
+					<button class="w3-bar-item w3-button tablink w3-deep-purple" onclick="openForm(event, 'task')">Add Tasks</button>
+					<button class="w3-bar-item w3-button tablink" onclick="openForm(event, 'user')">Add Users</button>
+				</div> 
+
+				<form class="w3-container form" id="user" method="POST" style="display:None">
+					<label class="w3-text-deep-purple">User Id</label>
+					<input class="w3-input" type="text" name="id" value="u${users.length}" readonly/>
+
+					<label class="w3-text-deep-purple">User Name</label>
+					<input class="w3-input" name="username" type="text"/>
+
+					<button class="w3-btn w3-deep-purple w3-round w3-margin">Register</button>
+				</form>
+
+				<form class="w3-container form" id="task" method="POST" style="display:Block">`
 
 	if (t == null)
 	{
@@ -48,12 +79,12 @@ exports.genPage = function (tasks, t = null) {
 						<input class="w3-input" type="text" name="description" value="${t.description}"/>`
 	}
 	pagHTML +=`
-					<button class="w3-btn w3-deep-purple w3-round w3-mb2" type="submit">Register</button>
+					<button class="w3-btn w3-deep-purple w3-round w3-mb2 w3-margin" type="submit">Register</button>
 				</form>
 			</div>
 
 			<div class="w3-row" style="height:60vh">
-				<div class="w3-card w3-half w3-border-right" style="height:60vh">
+				<div class="w3-card-4 w3-half w3-border-right" style="height:60vh">
 					<div class="w3-container w3-deep-purple">
 						<h3>Due Tasks</h3>
 					</div>
@@ -84,7 +115,7 @@ exports.genPage = function (tasks, t = null) {
 											<a href="http://localhost:7777/edit/${task.id}">
 												[Edit]
 											</a>
-											<a href="http://localhost:7777/done/${task.id}">
+											<a href="http://localhost:7777/markdone/${task.id}">
 												[Mark as Done]
 											</a>
 										</td>
@@ -97,7 +128,7 @@ exports.genPage = function (tasks, t = null) {
 					</table>
 				</div>
 
-				<div class="w3-card w3-half w3-borderleft" style="height:60vh;overflow-y: hidden;">
+				<div class="w3-card-4 w3-half w3-borderleft" style="height:60vh;overflow-y: hidden;">
 					<div class="w3-container w3-deep-purple">
 						<h3>Done Tasks</h3>
 					</div>
@@ -135,9 +166,9 @@ exports.genPage = function (tasks, t = null) {
 
 			</div>
 
-			<div class="w3-container w3-deep-purple" style="height: 6vh">
+			<footer class="w3-container w3-deep-purple" style="height: 6vh">
 				<p>By João Novais</p>
-			</div>
+			</footer>
 		</body>
 	</html>
 	`

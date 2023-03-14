@@ -74,7 +74,7 @@ var servidor = http.createServer((req, res) => {
 						res.end('<p>Erro no acesso à base de dados ' + error + '</p>')
 					})
 			}
-			else if (req.url.match(/\/markdone\/t\d+/))
+			else if (req.url.match(/\/done\/t\d+/))
 			{
 				let idTask = req.url.split("/")[2]
 
