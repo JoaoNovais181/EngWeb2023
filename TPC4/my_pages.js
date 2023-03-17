@@ -10,7 +10,6 @@ exports.genPage = function (tasks, users=[], t = null) {
 			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
 			<script>
 				function openForm(evt, formName) {
-					console.log("Crl")
 					var i;
 				 	var x = document.getElementsByClassName("form");
 					for (i = 0; i < x.length; i++) {
