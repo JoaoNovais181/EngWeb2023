@@ -3,23 +3,6 @@ var router = express.Router();
 var Task = require('../controllers/task')
 var User = require('../controllers/user')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	User.list()
-		.then(users => {
-			Task.list()
-				.then(tasks => {
-					res.render("index", {tasks:tasks, t:null, users:users})
-				})
-				.catch(error => {
-					res.render("error", {error:error, message:"Error obtaining task list"})
-				})
-		})
-		.catch(error => {
-			res.render("error", {error:error, message:"Error obtaining user list"})
-		})
-});
-
 router.get('/markdone/:taskID', function(req, res, next) {
 	Task.getTask(req.params.taskID)
 		.then(task => {
@@ -42,8 +25,9 @@ router.get('/edit/:taskID', function(req, res, next) {
 		.then(users => {
 			Task.list()
 				.then(tasks => {
+					var d = new Date().toISOString().substring(0,16)
 					var t = tasks.find(t => t.id == req.params.taskID)
-					res.render("index", {tasks:tasks, t:t, users:users})
+					res.render("index", {tasks:tasks, t:t, users:users, date:d})
 				})
 				.catch(error => {
 					res.render("error", {error:error, message:"Error obtaining task list"})
@@ -53,6 +37,25 @@ router.get('/edit/:taskID', function(req, res, next) {
 			res.render("error", {error:error, message:"Error obtaining user list"})
 		})
 });
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+	User.list()
+		.then(users => {
+			Task.list()
+				.then(tasks => {
+					var d = new Date().toISOString().substring(0,16)
+					res.render("index", {tasks:tasks, t:null, users:users, date:d})
+				})
+				.catch(error => {
+					res.render("error", {error:error, message:"Error obtaining task list"})
+				})
+		})
+		.catch(error => {
+			res.render("error", {error:error, message:"Error obtaining user list"})
+		})
+});
+
 
 
 router.post('/', function(req, res, next) {
